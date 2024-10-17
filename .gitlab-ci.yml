@@ -1,0 +1,22 @@
+stages:
+  - build
+  - publish
+
+build:
+  stage: build
+  image: golang:1.23
+  script:
+    - go mod init app/hello-world
+    - go build -o hello-world .
+  artifacts:
+    paths:
+      - hello-world
+
+publish:
+  stage: publish
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t $DOCKER_USERNAME/hello-world .
+    - docker push $DOCKER_USERNAME/hello-world
+  only:
+    - main
