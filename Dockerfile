@@ -1,20 +1,20 @@
-FROM golang:1.23 AS builder
+FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
 
 COPY go.mod ./
 RUN go mod download
 
-COPY . /app
+COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o hello-world .
+RUN go build -o hello_world
 
-FROM alpine:latest 
+FROM alpine:latest
 
-WORKDIR /app
+WORKDIR /root/
 
-COPY --from=builder /app/hello-world .
+COPY --from=builder /app/hello_world .
 
 EXPOSE 8080
 
-CMD ["./hello-world"]
+CMD ["./hello_world"]

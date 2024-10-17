@@ -1,3 +1,3 @@
-module workspace/hello_world
+module gitlab.com/test1393043/hello_world
 
-go 1.23.2
+go 1.21
