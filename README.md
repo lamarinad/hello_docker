@@ -7,3 +7,6 @@
 - Опубликовать исходный код в GitLab
 - Опубликовать Docker-образ с приложением в Docker-HUB
 - Написать gitlab-CI конвейер для сборки/публикации этого приложения
+
+Публикация в GitLab: [https://gitlab.com/test1393043/hello_world]
+Публикация в Docker-HUB: [https://hub.docker.com/repository/docker/lamarinad/hello_world/general]
